@@ -154,7 +154,7 @@ export default {
   .class_tree_items_wrap {
     padding: 10px 15px;
     margin-right: -4%;
-    margin-top: 30px;
+    margin-top: 60px;
     text-align: center;
     > div {
       float: left;
@@ -169,9 +169,12 @@ export default {
 
     .class_tree_item_img {
       display: inline-block;
-      max-width: 100%;
-      // width: 70px;
-      // height: 70px;
+      width: 90%;
+      > img {
+        width: 100%;
+        aspect-ratio: 1/1;
+        border-radius: 10px;
+      }
     }
     .class_tree_item_name {
       overflow: hidden;

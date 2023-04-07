@@ -107,16 +107,18 @@
     </van-panel> -->
 
     <van-panel>
-      <van-row gutter>
-        <van-col span="12"
+      <van-row type="flex" justify="space-around" >
+        <van-col span="10"
                  v-for="(newGood ,index) in shopInfos.newGoodsList"
                  :key="index">
-          <router-link :to="{ path: `/items/detail/${newGood.id}`}">
-            <img :src="newGood.picUrl"
-                 style="width:180px;height:180px;">
-          </router-link>
-          <span style="padding-left: 20px;position: relative;bottom: 10px; color: rgb(123, 116, 116);white-space: nowrap;">{{newGood.name}}</span>
-          <span style="padding-left: 80px;position: relative;bottom: 10px; color:#ab956d">￥ {{newGood.retailPrice}}</span>
+          <div class="new_good_item">
+            <!-- <router-link :to="{ path: `/items/detail/${newGood.id}`}">
+              <img :src="newGood.picUrl" class="new_good_pic">
+            </router-link> -->
+            <img :src="newGood.picUrl" class="new_good_pic">
+            <div class="new_good_name">{{newGood.name}}</div>
+            <div class="new_good_brief">{{newGood.brief}}</div>
+          </div>
         </van-col>
       </van-row>
       <div slot='header'>
@@ -126,7 +128,7 @@
       </div>
     </van-panel>
 
-    <van-panel>
+    <!-- <van-panel>
       <van-card :thumb-link="goDetail(groupGood.id)"
                 v-for="(groupGood ,index) in shopInfos.hotGoodsList"
                 :key="index"
@@ -142,7 +144,7 @@
           <van-cell title="人气推荐"></van-cell>
         </van-cell-group>
       </div>
-    </van-panel>
+    </van-panel> -->
 
   </div>
 </template>
@@ -212,6 +214,7 @@ export default {
     initViews() {
       getHome().then(res => {
         this.shopInfos = res.data.data;
+        console.log(this.shopInfos)
       });
     }
   },
@@ -400,4 +403,32 @@ export default {
 .van-coupon-item--disabled span {
   color: #969799;
 }
+
+.new_good_item {
+  text-align: center;
+  width: 100%;
+  border: 1px solid rgba(230,230,230,0.5);
+  border-radius: 12px;
+  margin-bottom: 20px;
+  box-shadow: 5px 6px 10px 1px rgba(230,230,230,0.7);
+}
+
+.new_good_pic {
+  width:100%;
+  aspect-ratio: 1;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.new_good_name {
+  margin-top: 2px;
+  font-size: 14px;
+}
+
+.new_good_brief {
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: gray;
+}
+
 </style>

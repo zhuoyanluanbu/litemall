@@ -5,18 +5,20 @@
       <van-tab v-for="(nav, index) in navList"
                :title="nav.name"
                :key="index">
-      
-        
           <van-grid clickable
                   :column-num="2"
-                  :border="false">
+                  :border="false"
+                  class="grid">
             <van-grid-item v-for="(item, i) in goodsList"
                        :key="i"
                        :text="item.name"
-                       @click="itemClick(item.id)">
-              <img :src="item.picUrl" style="width: 100%;" />
-              <div style="font-size:14px;text-align: center;"> {{ item.name }}</div>
-              <div style="font-size:12px;color: gray;margin-top: 3px;"> {{ item.brief }}</div>
+                       @click="itemClick(item.id)"
+                       @grid-item-content-background-color="gray">
+              <div class="good_container">
+                <img :src="item.picUrl" class="good_picture"/>
+                <div class="good_name"> {{ item.name }}</div>
+                <div class="good_brief"> {{ item.brief }}</div>
+              </div>
             </van-grid-item>
           </van-grid>
         
@@ -139,27 +141,35 @@ export default {
   background-color: #fff;
 }
 
-.h {
-  height: 100px;
+.grid {
+  padding: 0 4%;
+}
+
+.good_container {
   width: 100%;
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid rgba(230,230,230,0.5);
+  padding-bottom: 7px;
+  margin-bottom: -9px;
+  box-shadow: 2px 2px 5px 1px rgba(230,230,230,0.5);
 }
 
-.h .name {
-  display: block;
-  height: 30px;
-  margin-bottom: 10px;
-  font-size: 20px;
-  color: #333;
+.good_picture {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  width: 100%;
 }
 
-.h .desc {
-  display: block;
-  height: 24px;
-  font-size: 16px;
-  color: #999;
+.good_name {
+  font-size: 14px;
+  margin: 1px 5px;
 }
+
+.good_brief {
+  font-size:12px;
+  color: gray;
+  margin: 0 5px;
+}
+
 </style>
