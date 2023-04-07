@@ -1,10 +1,11 @@
 <template>
   <div class="tab_home">
-    <div class="tal_class_searchBox">
+    <!-- <div class="tal_class_searchBox">
       <van-search placeholder="点击前往搜索"
                   @click="$router.push({ name: 'search' })" />
       <div class="tal_class_searchMask"></div>
-    </div>
+    </div> -->
+
     <van-swipe :autoplay="3000"
                indicator-color="white">
       <van-swipe-item v-for="(banner, index) in shopInfos.banner"
@@ -14,7 +15,7 @@
       </van-swipe-item>
     </van-swipe>
 
-    <div class="goods-channel">
+    <!-- <div class="goods-channel">
       <div class="item"
            @click="changeTabbar(channel)"
            v-for="(channel, index) in shopInfos.channel"
@@ -80,9 +81,9 @@
           </van-cell>
         </van-cell-group>
       </div>
-    </van-panel>
+    </van-panel> -->
 
-    <van-panel>
+    <!-- <van-panel>
       <van-grid clickable
                 :column-num="2">
         <van-grid-item v-for="(brand ,index) in shopInfos.brandList"
@@ -103,7 +104,7 @@
           </van-cell>
         </van-cell-group>
       </div>
-    </van-panel>
+    </van-panel> -->
 
     <van-panel>
       <van-row gutter>
@@ -120,11 +121,7 @@
       </van-row>
       <div slot='header'>
         <van-cell-group>
-          <van-cell title="新品首发"
-                    isLink>
-            <router-link to="/items/new"
-                         class="text-desc">更多新品首发</router-link>
-          </van-cell>
+          <van-cell title="新品首发"></van-cell>
         </van-cell-group>
       </div>
     </van-panel>
@@ -139,38 +136,10 @@
                 :price="groupGood.retailPrice +'.00'"
                 :thumb="groupGood.picUrl"
                 @native-click="goDetail(groupGood.id)">
-        <!-- <div slot="footer">添加日期 {{item.addTime}}</div> -->
       </van-card>
       <div slot='header'>
         <van-cell-group>
-          <van-cell title="人气推荐"
-                    isLink>
-            <router-link to="/items/hot"
-                         class="text-desc">更多人气推荐</router-link>
-          </van-cell>
-        </van-cell-group>
-      </div>
-    </van-panel>
-
-<van-panel>
-      <van-grid clickable
-                :column-num="2">
-        <van-grid-item v-for="(topic ,index) in shopInfos.topicList"
-                       :key="index"
-                       :url="goTopic(topic.id)">
-          <img :src="topic.picUrl"
-               style="width: 90%; max-height: 150px;" />
-          <div style="font-size:14px;color:#ab956d;"> {{ topic.title }}</div>
-          <div style="font-size:10px;color:#ab956d;"> {{ topic.subtitle }}</div>
-        </van-grid-item>
-      </van-grid>
-      <div slot='header'>
-        <van-cell-group>
-          <van-cell title="专题精选"
-                    isLink>
-            <router-link to="/items/topic-list"
-                         class="text-desc">更多专题精选</router-link>
-          </van-cell>
+          <van-cell title="人气推荐"></van-cell>
         </van-cell-group>
       </div>
     </van-panel>
@@ -271,10 +240,10 @@ export default {
 
 <style lang="scss" scoped>
 .interval_bot {
-  margin-bottom: 10px;
+  margin-bottom: 0px;
 }
 .van-panel {
-  margin-top: 20px;
+  margin-top: 0px;
 }
 .goods-channel {
   background: #fff;

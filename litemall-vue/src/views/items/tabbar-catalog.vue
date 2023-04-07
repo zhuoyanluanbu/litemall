@@ -1,8 +1,9 @@
 <template>
   <div class="tab_class">
-    <div class="tal_class_searchBox">
-      <van-search placeholder="点击前往搜索"/>
-      <div class="tal_class_searchMask" @click="$router.push({ name: 'search' })"></div>
+    <div class="tal_class_title">
+      <h2>
+        分类   <span class="cur_category_name"> > {{ currentCategory.name }}</span>
+      </h2>
     </div>
 
     <div class="class_tree clearfix">
@@ -18,9 +19,9 @@
       <div class="class_tree_all">
         <img style="width:250px" v-lazy="currentCategory.picUrl">
       </div>
-      <div class="box">
+      <!-- <div class="box">
         <span>{{currentCategory.desc}}</span>
-      </div>
+      </div> -->
       <div class="class_tree_items_wrap clearfix">
         <div @click="toItemList(item.id)" :key="i" v-for="(item, i) in currentSubCategoryList">
           <div class="class_tree_item_img">
@@ -95,32 +96,16 @@ export default {
   padding-bottom: 42px;
 }
 
-.tal_class_searchBox {
-  position: relative;
+.tal_class_title {
+  padding-left: 36px;
 }
 
-.tal_class_searchMask {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 9;
+.cur_category_name {
+  font-size: 15px;
+  font-weight: 400;
+  margin-left: 18px;
 }
 
-
-.box {
-  width: 250px;
-  height: 20px;
-  text-align: center;
-  font-family: PingFangSC-Light, helvetica, 'Heiti SC';
-  font-size: 13px;
-  position: absolute;
-  top: 95px;
-}
-.box span {
-  line-height: 20px;
-}
 .class_tree {
   position: relative;
   background-color: #fff;
@@ -167,15 +152,15 @@ export default {
     font-size: $font-size-small;
   }
   .class_tree_items_wrap {
-    padding: 10px 20px;
-    margin-right: -3%;
-    margin-top: 70px;
+    padding: 10px 15px;
+    margin-right: -4%;
+    margin-top: 30px;
     text-align: center;
     > div {
       float: left;
-      padding-right: 3%;
+      // padding-right: 3%;
       box-sizing: border-box;
-      width: 33.333%;
+      width: 50%;
       margin-bottom: 20px;
     }
     img {
@@ -185,8 +170,8 @@ export default {
     .class_tree_item_img {
       display: inline-block;
       max-width: 100%;
-      width: 70px;
-      height: 70px;
+      // width: 70px;
+      // height: 70px;
     }
     .class_tree_item_name {
       overflow: hidden;

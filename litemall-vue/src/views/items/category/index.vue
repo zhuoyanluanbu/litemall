@@ -5,7 +5,22 @@
       <van-tab v-for="(nav, index) in navList"
                :title="nav.name"
                :key="index">
-        <van-list v-model="loading"
+      
+        
+          <van-grid clickable
+                  :column-num="2"
+                  :border="false">
+            <van-grid-item v-for="(item, i) in goodsList"
+                       :key="i"
+                       :text="item.name"
+                       @click="itemClick(item.id)">
+              <img :src="item.picUrl" style="width: 100%;" />
+              <div style="font-size:14px;text-align: center;"> {{ item.name }}</div>
+              <div style="font-size:12px;color: gray;margin-top: 3px;"> {{ item.brief }}</div>
+            </van-grid-item>
+          </van-grid>
+        
+        <!-- <van-list v-model="loading"
                   :finished="finished"
                   :immediate-check="false"
                   finished-text="没有更多了"
@@ -22,7 +37,7 @@
                     :price="item.retailPrice"
                     :origin-price="item.counterPrice"
                     @click="itemClick(item.id)" />
-        </van-list>
+        </van-list> -->
 
       </van-tab>
     </van-tabs>
@@ -31,7 +46,7 @@
 
 <script>
 import { goodsCategory, goodsList } from '@/api/api';
-import { Card, List, Tab, Tabs } from 'vant';
+import { Card, List, Tab, Tabs, Grid, GridItem } from 'vant';
 
 export default {
   name: 'Item-list',
@@ -103,7 +118,8 @@ export default {
       });
     },
     itemClick(id) {
-      this.$router.push(`/items/detail/${id}`);
+      console.log(id);
+      // this.$router.push(`/items/detail/${id}`);
     }
   },
 
@@ -111,7 +127,9 @@ export default {
     [List.name]: List,
     [Card.name]: Card,
     [Tab.name]: Tab,
-    [Tabs.name]: Tabs
+    [Tabs.name]: Tabs,
+    [Grid.name]: Grid,
+    [GridItem.name]: GridItem
   }
 };
 </script>
