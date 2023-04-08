@@ -16,8 +16,19 @@
                        @grid-item-content-background-color="gray">
               <div class="good_container">
                 <img :src="item.picUrl" class="good_picture"/>
-                <div class="good_name"> {{ item.name }}</div>
-                <div class="good_brief"> {{ item.brief }}</div>
+                <div class="good_text_container">
+                  <div class="good_name"> {{ item.name }}</div>
+                  <div class="good_brief"> {{ item.brief }}</div>
+                  <div> 
+                    <span class="good_retail_price">
+                      ￥{{(item.retailPrice+'').indexOf('.') < 0 ? item.retailPrice+'.00' : item.retailPrice }}
+                    </span>
+                    <span style="font-size:10px;text-decoration: line-through;color: rgb(181, 171, 171);">
+                      ￥{{(item.counterPrice+'').indexOf('.') < 0 ? item.counterPrice+'.00' : item.counterPrice}}
+                    </span>
+                  </div>
+                  
+                </div>
               </div>
             </van-grid-item>
           </van-grid>
@@ -114,6 +125,7 @@ export default {
         page: this.page,
         limit: this.limit
       }).then(res => {
+        console.log(res.data.data.list)
         this.goodsList.push(...res.data.data.list);
         this.loading = false;
         this.finished = res.data.data.page >= res.data.data.pages;
@@ -142,13 +154,13 @@ export default {
 }
 
 .grid {
-  padding: 0 4%;
+  padding: 0 4% 50px %4 ;
 }
 
 .good_container {
   width: 100%;
   border-radius: 12px;
-  text-align: center;
+  text-align: left;
   border: 1px solid rgba(230,230,230,0.5);
   padding-bottom: 7px;
   margin-bottom: -9px;
@@ -161,15 +173,24 @@ export default {
   width: 100%;
 }
 
+.good_text_container {
+  padding: 2px 10px;
+  text-align: center;
+}
+
 .good_name {
   font-size: 14px;
-  margin: 1px 5px;
 }
 
 .good_brief {
   font-size:12px;
-  color: gray;
-  margin: 0 5px;
+  color: rgb(155, 153, 153);
+}
+
+.good_retail_price {
+  font-size:13px;
+  color: rgb(237, 130, 130);
+  margin-right: 5px;
 }
 
 </style>

@@ -118,6 +118,14 @@
             <img :src="newGood.picUrl" class="new_good_pic">
             <div class="new_good_name">{{newGood.name}}</div>
             <div class="new_good_brief">{{newGood.brief}}</div>
+            <div style="margin-bottom: 6px;">
+              <span style="font-size:13px; color: rgb(237, 130, 130); margin-right: 5px;">
+                ￥{{(newGood.retailPrice+'').indexOf('.') < 0 ? newGood.retailPrice+'.00' : newGood.retailPrice }}
+              </span>
+              <span style="font-size:10px;text-decoration: line-through;color: rgb(181, 171, 171);">
+                ￥{{(newGood.counterPrice+'').indexOf('.') < 0 ? newGood.counterPrice+'.00' : newGood.counterPrice}}
+              </span>
+            </div>
           </div>
         </van-col>
       </van-row>
@@ -426,7 +434,6 @@ export default {
 }
 
 .new_good_brief {
-  margin-bottom: 8px;
   font-size: 12px;
   color: gray;
 }
