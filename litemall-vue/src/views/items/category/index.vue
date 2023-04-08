@@ -5,15 +5,21 @@
       <van-tab v-for="(nav, index) in navList"
                :title="nav.name"
                :key="index">
-          <van-grid clickable
+          
+        
+        <van-list v-model="loading"
+                  :finished="finished"
+                  :immediate-check="false"
+                  finished-text="没有更多了"
+                  @load="getGoodsList">
+                  <van-grid clickable
                   :column-num="2"
                   :border="false"
                   class="grid">
             <van-grid-item v-for="(item, i) in goodsList"
                        :key="i"
                        :text="item.name"
-                       @click="itemClick(item.id)"
-                       @grid-item-content-background-color="gray">
+                       @click="itemClick(item.id)">
               <div class="good_container">
                 <img :src="item.picUrl" class="good_picture"/>
                 <div class="good_text_container">
@@ -32,29 +38,10 @@
               </div>
             </van-grid-item>
           </van-grid>
-        
-        <!-- <van-list v-model="loading"
-                  :finished="finished"
-                  :immediate-check="false"
-                  finished-text="没有更多了"
-                  @load="getGoodsList">
-          <div class="h">
-            <div class="name">{{currentCategory.name}}</div>
-            <div class="desc">{{currentCategory.desc}}</div>
-          </div>
-          <van-card v-for="(item, i) in goodsList"
-                    :key="i"
-                    :desc="item.brief"
-                    :title="item.name"
-                    :thumb="item.picUrl"
-                    :price="item.retailPrice"
-                    :origin-price="item.counterPrice"
-                    @click="itemClick(item.id)" />
-        </van-list> -->
+        </van-list>
 
       </van-tab>
     </van-tabs>
-    <div class="blank"> ——————　到底啦　—————— </div>
   </div>
 </template>
 
@@ -102,7 +89,6 @@ export default {
       goodsCategory({ id: this.categoryId }).then(res => {
         this.navList = res.data.data.brotherCategory;
         this.currentCategory = res.data.data.currentCategory;
-
         // 当id是L1分类id时，这里需要重新设置成L1分类的一个子分类的id
         if (res.data.data.parentCategory.id == this.categoryId) {
           this.categoryId = res.data.data.currentCategory.id;
@@ -126,7 +112,7 @@ export default {
         page: this.page,
         limit: this.limit
       }).then(res => {
-        console.log(res.data.data.list)
+        console.log(res.data.data);
         this.goodsList.push(...res.data.data.list);
         this.loading = false;
         this.finished = res.data.data.page >= res.data.data.pages;
@@ -152,16 +138,6 @@ export default {
 <style lang="scss" scoped>
 .item_list {
   background-color: #fff;
-}
-
-.blank {
-  text-align: center;
-  font-size: 12px;
-  height: 40px;
-  line-height: 40px;
-  width: 100%;
-  color: #bbb;
-  background-color: white;
 }
 
 .grid {

@@ -21,7 +21,7 @@ export default {
       active: 0,
       tabbar: [
         {
-          name: '精选',
+          name: '首页',
           path: '/',
           pathName: 'home',
           icon: 'compass-full',
