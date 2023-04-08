@@ -54,6 +54,7 @@
 
       </van-tab>
     </van-tabs>
+    <div class="blank"> ——————　到底啦　—————— </div>
   </div>
 </template>
 
@@ -153,8 +154,18 @@ export default {
   background-color: #fff;
 }
 
+.blank {
+  text-align: center;
+  font-size: 12px;
+  height: 40px;
+  line-height: 40px;
+  width: 100%;
+  color: #bbb;
+  background-color: white;
+}
+
 .grid {
-  padding: 0 4% 50px %4 ;
+  padding: 0 3.3%;
 }
 
 .good_container {
