@@ -46,9 +46,9 @@
       </div>
     </el-form>
 
-    <div class="copyright">
+    <!-- <div class="copyright">
       Copyright © 2022 xxx.com 版权所有 <a href="https://github.com/linlinjava/litemall">沪ICP备xxx号</a>
-    </div>
+    </div> -->
   </div>
 </template>
 

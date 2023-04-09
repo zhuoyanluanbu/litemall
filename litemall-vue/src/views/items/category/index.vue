@@ -5,17 +5,15 @@
       <van-tab v-for="(nav, index) in navList"
                :title="nav.name"
                :key="index">
-          
-        
         <van-list v-model="loading"
                   :finished="finished"
                   :immediate-check="false"
                   finished-text="没有更多了"
                   @load="getGoodsList">
-                  <van-grid clickable
-                  :column-num="2"
-                  :border="false"
-                  class="grid">
+          <van-grid clickable
+                    :column-num="2"
+                    :border="false"
+                    class="grid">
             <van-grid-item v-for="(item, i) in goodsList"
                        :key="i"
                        :text="item.name"

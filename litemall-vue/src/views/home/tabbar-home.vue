@@ -11,7 +11,7 @@
       <van-swipe-item v-for="(banner, index) in shopInfos.banner"
                       :key="index">
         <img :src="banner.url"
-             style="height:230px">
+             style="height:230px;width: 100%;">
       </van-swipe-item>
     </van-swipe>
 
@@ -472,7 +472,7 @@ export default {
 }
 
 .grid {
-  padding: 0 3.3%;
+  padding: 0 3%;
 }
 
 .good_container {

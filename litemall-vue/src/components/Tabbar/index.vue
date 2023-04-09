@@ -24,7 +24,7 @@ export default {
           name: '首页',
           path: '/',
           pathName: 'home',
-          icon: 'compass-full',
+          icon: 'icon104',
           dot: false,
           info: ''
         },

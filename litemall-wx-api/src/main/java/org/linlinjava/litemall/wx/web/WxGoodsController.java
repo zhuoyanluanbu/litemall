@@ -255,7 +255,7 @@ public class WxGoodsController {
 		@LoginUser Integer userId,
 		@RequestParam(defaultValue = "1") Integer page,
 		@RequestParam(defaultValue = "10") Integer limit,
-		@Sort(accepts = {"add_time", "retail_price", "name"}) @RequestParam(defaultValue = "add_time") String sort,
+		@Sort(accepts = {"update_time", "retail_price", "name"}) @RequestParam(defaultValue = "update_time") String sort,
 		@Order @RequestParam(defaultValue = "desc") String order) {
 
 		//添加到搜索历史
