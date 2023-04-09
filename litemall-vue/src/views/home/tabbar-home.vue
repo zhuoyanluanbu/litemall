@@ -6,7 +6,7 @@
       <div class="tal_class_searchMask"></div>
     </div> -->
 
-    <van-swipe :autoplay="3000"
+    <van-swipe :autoplay="5000"
                indicator-color="white">
       <van-swipe-item v-for="(banner, index) in shopInfos.banner"
                       :key="index">
@@ -106,15 +106,12 @@
       </div>
     </van-panel> -->
 
-    <van-panel>
+    <!-- <van-panel>
       <van-row type="flex" justify="space-around" >
         <van-col span="10"
                  v-for="(newGood ,index) in shopInfos.newGoodsList"
                  :key="index">
           <div class="new_good_item">
-            <!-- <router-link :to="{ path: `/items/detail/${newGood.id}`}">
-              <img :src="newGood.picUrl" class="new_good_pic">
-            </router-link> -->
             <img :src="newGood.picUrl" class="new_good_pic">
             <div class="new_good_name">{{newGood.name}}</div>
             <div class="new_good_brief">{{newGood.brief}}</div>
@@ -134,7 +131,7 @@
           <van-cell title="新品首发"></van-cell>
         </van-cell-group>
       </div>
-    </van-panel>
+    </van-panel> -->
 
     <!-- <van-panel>
       <van-card :thumb-link="goDetail(groupGood.id)"
@@ -153,6 +150,38 @@
         </van-cell-group>
       </div>
     </van-panel> -->
+
+    <van-list v-model="loading"
+                  :finished="finished"
+                  :immediate-check="false"
+                  finished-text="没有更多了"
+                  @load="getGoodsList">
+          <van-grid clickable
+                    :column-num="2"
+                    :border="false"
+                    class="grid">
+            <van-grid-item v-for="(item, i) in shopInfos.newGoodsList"
+                       :key="i"
+                       :text="item.name">
+              <div class="good_container">
+                <img :src="item.picUrl" class="good_picture"/>
+                <div class="good_text_container">
+                  <div class="good_name"> {{ item.name }}</div>
+                  <div class="good_brief"> {{ item.brief }}</div>
+                  <div> 
+                    <span class="good_retail_price">
+                      ￥{{(item.retailPrice+'').indexOf('.') < 0 ? item.retailPrice+'.00' : item.retailPrice }}
+                    </span>
+                    <span style="font-size:10px;text-decoration: line-through;color: rgb(181, 171, 171);">
+                      ￥{{(item.counterPrice+'').indexOf('.') < 0 ? item.counterPrice+'.00' : item.counterPrice}}
+                    </span>
+                  </div>
+                  
+                </div>
+              </div>
+            </van-grid-item>
+          </van-grid>
+        </van-list>
 
   </div>
 </template>
@@ -250,6 +279,10 @@ export default {
 
 
 <style lang="scss" scoped>
+
+.tab_home {
+  background-color: white;
+}
 .interval_bot {
   margin-bottom: 0px;
 }
@@ -436,6 +469,46 @@ export default {
 .new_good_brief {
   font-size: 12px;
   color: gray;
+}
+
+.grid {
+  padding: 0 3.3%;
+}
+
+.good_container {
+  width: 100%;
+  border-radius: 12px;
+  text-align: left;
+  border: 1px solid rgba(230,230,230,0.5);
+  padding-bottom: 7px;
+  margin-bottom: -9px;
+  box-shadow: 2px 2px 5px 1px rgba(230,230,230,0.5);
+}
+
+.good_picture {
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  width: 100%;
+}
+
+.good_text_container {
+  padding: 2px 10px;
+  text-align: center;
+}
+
+.good_name {
+  font-size: 14px;
+}
+
+.good_brief {
+  font-size:12px;
+  color: rgb(155, 153, 153);
+}
+
+.good_retail_price {
+  font-size:13px;
+  color: rgb(237, 130, 130);
+  margin-right: 5px;
 }
 
 </style>

@@ -17,17 +17,14 @@
     </ul>
     <div class="class_tree_content">
       <div class="class_tree_all">
-        <img style="width:250px" v-lazy="currentCategory.picUrl">
+        <img style="width:100%;height:85px;border-radius:10px;" v-lazy="currentCategory.picUrl">
       </div>
-      <!-- <div class="box">
-        <span>{{currentCategory.desc}}</span>
-      </div> -->
       <div class="class_tree_items_wrap clearfix">
         <div @click="toItemList(item.id)" :key="i" v-for="(item, i) in currentSubCategoryList">
           <div class="class_tree_item_img">
             <img :src="item.picUrl" :alt="item.name">
           </div>
-          <div class="class_tree_item_name">{{item.name}}</div>
+          <div class="class_tree_item_name">· {{item.name}} ·</div>
         </div>
       </div>
     </div>
@@ -142,9 +139,8 @@ export default {
   overflow-y: scroll;
   .class_tree_all {
     text-align: right;
-    padding-right: 10px;
-    height: 40px;
-    line-height: 40px;
+    padding:0 10px;
+    height: 85px;
     color: $font-color-gray;
     font-size: $font-size-small;
   }
@@ -152,16 +148,16 @@ export default {
     font-size: $font-size-small;
   }
   .class_tree_items_wrap {
-    padding: 10px 15px;
-    margin-right: -4%;
-    margin-top: 60px;
+    padding: 10px 5px 10px 5px;
+    margin: 15px 0 25px 0;
     text-align: center;
     > div {
       float: left;
       // padding-right: 3%;
       box-sizing: border-box;
       width: 50%;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
+      border-radius: 10px;
     }
     img {
       max-width: 100%;
@@ -180,6 +176,7 @@ export default {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      color: #666;
     }
   }
 }
